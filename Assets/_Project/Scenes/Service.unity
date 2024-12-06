@@ -666,7 +666,6 @@ GameObject:
   - component: {fileID: 524850878}
   - component: {fileID: 524850875}
   - component: {fileID: 524850874}
-  - component: {fileID: 524850873}
   - component: {fileID: 524850872}
   - component: {fileID: 524850876}
   - component: {fileID: 524850877}
@@ -707,6 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86a3347634742b6966e88359eca744e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSettings: {fileID: 11400000, guid: 23bdd0e7d9812cb4c9ffb29dc3701eb7, type: 2}
 --- !u!114 &524850872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,19 +720,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inAppReview: {fileID: 11400000, guid: 6b191e3ca00186348845eada05e37528, type: 2}
---- !u!114 &524850873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524850868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0632c82166b94d97976cd3c6e6483d1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemConfig: {fileID: 11400000, guid: bf6201b4097e66c43983ff56f832ac35, type: 2}
 --- !u!114 &524850874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -769,6 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f358e15a7c94c079139d0aefa6c6a51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSettings: {fileID: 11400000, guid: 23bdd0e7d9812cb4c9ffb29dc3701eb7, type: 2}
   showRequireInternetEvent: {fileID: 11400000, guid: 6f6b1e844d596d549bc5761e32eeeec3,
     type: 2}
 --- !u!114 &524850877
@@ -784,6 +772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugViewSheet: {fileID: 2095126785}
+  gameSettings: {fileID: 11400000, guid: 23bdd0e7d9812cb4c9ffb29dc3701eb7, type: 2}
   consoleInGamePrefab: {fileID: 1693451240832174851, guid: e1182754700ccf44289e0d137be27ec8,
     type: 3}
   iconTool: {fileID: 21300000, guid: 2d8be02cedaf05d4086f421a7bd95109, type: 3}
@@ -805,7 +794,6 @@ MonoBehaviour:
   iconOutfitDebug: {fileID: 21300000, guid: 1aaa9b4d13dbcb64baea375e33fc1f58, type: 3}
   iconConsoleLog: {fileID: 21300000, guid: 6dc678910c85e1948ab02dd201636490, type: 3}
   iconSlider: {fileID: 21300000, guid: b7cb707fa031cc94b8cc2f119bdfad21, type: 3}
-  itemConfig: {fileID: 11400000, guid: bf6201b4097e66c43983ff56f832ac35, type: 2}
   isOffUiVariable: {fileID: 11400000, guid: 03cbff122fde4534d9072e647621b894, type: 2}
   isTestingVariable: {fileID: 11400000, guid: d7eb04288f3f94c0d8523b23c6adcb25, type: 2}
   interAdVariable: {fileID: 11400000, guid: 88f7c202cefac3c4f9e29ffb5a85f62a, type: 2}
@@ -884,13 +872,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serviceInitializations:
   - {fileID: 524850871}
-  - {fileID: 524850872}
-  - {fileID: 524850873}
-  - {fileID: 524850874}
+  - {fileID: 524850878}
   - {fileID: 524850875}
+  - {fileID: 524850874}
+  - {fileID: 524850872}
   - {fileID: 524850876}
   - {fileID: 524850877}
-  - {fileID: 524850878}
   - {fileID: 524850879}
   - {fileID: 524850880}
 --- !u!1 &532783272
@@ -4643,6 +4630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: {fileID: 0}
   previousLevel: {fileID: 0}
+  levelSettings: {fileID: 11400000, guid: 17fc1781fab1682409f50f8ce80eef5b, type: 2}
   currentIndexLevel: {fileID: 11400000, guid: 4b75fe61160713244bd8c8bcf4ebecc6, type: 2}
   eventLoadLevel: {fileID: 11400000, guid: a23d4b373bb58e04fb8e85b3237c3797, type: 2}
   eventGetCurrentLevel: {fileID: 11400000, guid: 7e96f0ac661d9264dbdb066c74f8ffd8,
@@ -6291,11 +6279,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1431014500}
     m_Modifications:
-    - target: {fileID: 3305898790409175187, guid: 48cad98c82b3f884296a8111b8b750f8,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 125.000244
-      objectReference: {fileID: 0}
     - target: {fileID: 4287100684189731626, guid: 48cad98c82b3f884296a8111b8b750f8,
         type: 3}
       propertyPath: m_Name

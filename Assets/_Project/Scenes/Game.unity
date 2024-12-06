@@ -307,6 +307,7 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
 --- !u!1 &1013423904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,6 +1165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentContainer: {fileID: 8211564458401430868}
+  popupSettings: {fileID: 11400000, guid: cf3c7c0c087f6414e8b29b28b1f1a979, type: 2}
   cameraUI: {fileID: 6739577131307792012}
 --- !u!1 &4312348351780311926
 GameObject:

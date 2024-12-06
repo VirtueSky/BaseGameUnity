@@ -1,15 +1,15 @@
 #if UNITY_EDITOR
-using TheBeginning.UI;
+using TheBeginning.LevelSystem;
 using UnityEditor;
 using UnityEngine;
 using VirtueSky.ControlPanel.Editor;
 using VirtueSky.UtilsEditor;
 
-public class PopupConfigWindow
+public class LevelSettingsWindow
 {
     private static Vector2 _scrollPosition;
     private static UnityEditor.Editor _editor;
-    private static PopupSettings _config;
+    private static LevelSettings _config;
     private static Vector2 scroll = Vector2.zero;
 
     public static void OnEnable()
@@ -20,22 +20,22 @@ public class PopupConfigWindow
     private static void Init()
     {
         if (_editor != null) _editor = null;
-        _config = CreateAsset.GetScriptableAsset<PopupSettings>();
+        _config = CreateAsset.GetScriptableAsset<LevelSettings>();
         _editor = UnityEditor.Editor.CreateEditor(_config);
     }
 
     public static void Draw()
     {
         GUILayout.BeginVertical();
-        CPUtility.DrawHeader("Popup Settings");
+        CPUtility.DrawHeader("Level Settings");
         CPUtility.GuiLine();
         GUILayout.Space(10);
         scroll = EditorGUILayout.BeginScrollView(scroll);
         if (_config == null)
         {
-            if (GUILayout.Button("Create PopupSettings"))
+            if (GUILayout.Button("Create LevelSettings"))
             {
-                _config = CreateAsset.CreateAndGetScriptableAsset<PopupSettings>("Assets/_project/Config", useDefaultPath: false);
+                _config = CreateAsset.CreateAndGetScriptableAsset<LevelSettings>("Assets/_project/Config", useDefaultPath: false);
                 Init();
             }
         }
