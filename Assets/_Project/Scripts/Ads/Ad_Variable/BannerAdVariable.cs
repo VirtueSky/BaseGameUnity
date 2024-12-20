@@ -1,7 +1,5 @@
 using UnityEngine;
 using VirtueSky.Ads;
-using VirtueSky.Core;
-using VirtueSky.Tracking;
 using VirtueSky.Inspector;
 using VirtueSky.Variables;
 
@@ -9,15 +7,11 @@ using VirtueSky.Variables;
 public class BannerAdVariable : AdVariable
 {
     [SerializeField] private AdUnitVariable bannerVariable;
-    [Space, SerializeField] private BooleanVariable isOffBannerVariable;
+    [Space, SerializeField] private BooleanVariable debugOnOffBannerVariable;
 
     [Space, HeaderLine("Firebase Remote Config"), SerializeField]
     private BooleanVariable remoteConfigOnOffBanner;
 
-    [Space, HeaderLine("Track Firebase Analytic"), SerializeField]
-    private TrackingFirebaseNoParam trackingFirebaseShowBanner;
-
-    [SerializeField] private TrackingFirebaseNoParam trackingFirebaseHideBanner;
     public AdUnitVariable AdUnitBannerVariable => bannerVariable;
 
     public override void Init()
@@ -26,7 +20,7 @@ public class BannerAdVariable : AdVariable
 
     bool Condition()
     {
-        return bannerVariable.IsReady() && !isOffBannerVariable.Value && remoteConfigOnOffBanner.Value;
+        return bannerVariable.IsReady() && debugOnOffBannerVariable.Value && remoteConfigOnOffBanner.Value;
     }
 
     public void Show()
@@ -34,14 +28,12 @@ public class BannerAdVariable : AdVariable
         if (Condition())
         {
             bannerVariable.Show();
-            trackingFirebaseShowBanner.TrackEvent();
         }
     }
 
     public void Hide()
     {
         bannerVariable.HideBanner();
-        trackingFirebaseHideBanner.TrackEvent();
     }
 
     public AdUnitVariable ShowNoCondition()

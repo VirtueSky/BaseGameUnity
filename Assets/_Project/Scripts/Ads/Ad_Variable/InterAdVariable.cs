@@ -4,7 +4,6 @@ using TheBeginning.LevelSystem;
 using UnityEngine;
 using VirtueSky.Ads;
 using VirtueSky.Core;
-using VirtueSky.Tracking;
 using VirtueSky.Inspector;
 using VirtueSky.Variables;
 
@@ -14,12 +13,10 @@ public class InterAdVariable : AdVariable
     [SerializeField] private AdUnitVariable interVariable;
 
     [Space, SerializeField] private IntegerVariable indexLevelVariable;
-    [SerializeField] private BooleanVariable isOffInterAdsVariable;
+    [SerializeField] private BooleanVariable debugOnOffInterAdsVariable;
     [SerializeField] private IntegerVariable adsCounterVariable;
     [SerializeField] private FloatVariable timeCounterInterAds;
     [SerializeField] private EventGetGameState eventGetGameState;
-    [SerializeField] private EventLevel winLevelEvent;
-    [SerializeField] private EventLevel loseLevelEvent;
 
     [Space, HeaderLine("Firebase Remote Config"), SerializeField]
     private IntegerVariable remoteConfigLevelTurnOnInterstitial;
@@ -28,18 +25,14 @@ public class InterAdVariable : AdVariable
     [SerializeField] private IntegerVariable remoteConfigInterstitialCappingTimeVariable;
     [SerializeField] private BooleanVariable remoteConfigOnOffInterstitial;
 
-    [Space, HeaderLine("Track Firebase Analytic"), SerializeField]
-    private TrackingFirebaseNoParam trackingFirebaseRequestInter;
-
-    [SerializeField] private TrackingFirebaseNoParam trackingFirebaseShowInterCompleted;
     public AdUnitVariable AdUnitInterVariable => interVariable;
 
     public override void Init()
     {
         ResetCounter();
         App.SubTick(OnUpdate);
-        winLevelEvent.AddListener(OnEndLevel);
-        loseLevelEvent.AddListener(OnEndLevel);
+        GameManager.OnWinLevelEvent += OnEndLevel;
+        GameManager.OnLoseLevelEvent += OnEndLevel;
     }
 
     bool Condition()
@@ -47,7 +40,7 @@ public class InterAdVariable : AdVariable
         return interVariable.IsReady() && indexLevelVariable.Value > remoteConfigLevelTurnOnInterstitial.Value &&
                adsCounterVariable.Value >= remoteConfigInterstitialCappingLevelVariable.Value &&
                timeCounterInterAds.Value >= remoteConfigInterstitialCappingTimeVariable.Value &&
-               !isOffInterAdsVariable.Value &&
+               debugOnOffInterAdsVariable.Value &&
                remoteConfigOnOffInterstitial.Value;
     }
 
@@ -61,13 +54,11 @@ public class InterAdVariable : AdVariable
     {
         if (Condition())
         {
-            trackingFirebaseRequestInter.TrackEvent();
             interVariable.Show().OnCompleted(() =>
             {
                 DelayHandle(() =>
                 {
                     completeCallback?.Invoke();
-                    trackingFirebaseShowInterCompleted.TrackEvent();
                     ResetCounter();
                 });
             }).OnDisplayed(displayCallback);
